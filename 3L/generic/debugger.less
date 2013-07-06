@@ -1,0 +1,356 @@
+///**
+// * SEO & HTML Debugging
+// *
+// * A useful supporting class that will help you a bit with your SEO
+// * and usability of your website.
+// *
+// * @ABOUT
+// * Creating a website is a serious business, but sometimes you may
+// * forget about some important details. This class will help you.
+// * It will let you know if you haven't put an alt attribute on an image
+// * or kept that attribute empty, when you haven't typed an URL in an anchor or when
+// * an anchor link has rel=nofollow attribute. It will also show you an alert
+// * message if you don't have a <title> tag and description or left them empty(*).
+// *
+// * If any of those errors happens, an element will get a red outline
+// * border drawing your attention and asking for some love
+// * or you will get a message with the same purpose.
+// *
+// *    (*) The <title> reminder can alert you even if you have a <title> tag.
+// *        This happens if you have a <link> tag (usually used for style sheets)
+// *        before <title> in your HTML. Just change the order of <link> and
+// *        <title> and you're cool.
+// *
+// * @USAGE
+// * Just place .seo-helper() class in the stylesheet.
+// *
+// * @EXAMPLE
+// * .seo-helper()
+// *
+// * That way every element on your page will be affected
+// * by this rule. You can also place it in any other container
+// * class element in your code (body, div.wrapper, article and so on)
+// * if you don't want for some reasons to check for bugs on whole page
+// * but in a single area.
+// *
+// * Caution! It's only a developement support. Do not forget to delete
+// * this class before finishing yourproject and deploying to production,
+// * unless you want to keep it in continuous project (like blog)
+// * and debug every new content on your site. But then you might consider
+// * restyling this class to be a bit more eye-pleasing.
+// *
+// * This may not work in every browser, but since you are a web 
+// * developer/designer you're probably already using a bleeding
+// * edge nightly alpha back-door version of browser, so no problem!
+// * It's probably the only class you don't need to care about how
+// * your visitors will see it!
+// *
+// * @BROSERS SUPPORT
+// * (unknown / not important)
+// *
+// * @LINKS
+// * * http://radiatingstar.com/how-to-improve-seo-with-css
+// *
+// * @ASIDE
+// * Why img:not([alt]), img[alt=""] and img[alt^=" "]?
+// * First targets images that don't have an alt attribute, second targets
+// * ones that have this attribute but it's left empty (probably left by
+// * automatic completion of html editor), third is just in case - it
+// * might have been left by html editor or manually "to do it later" (clearly
+// * a space at the beginning of an alt can't be anything good).
+// *
+// * Why a[href=""]?
+// * If you write an anchor text and leave href to copyPaste URL later,
+// * it will reminding you about that.
+// *
+// * Why a[rel="nofollow"]?
+// * For some reasons links on your site may have this attribute and this
+// * may generate a huge SEO problem. Better fix it ASAP. (On the other hand
+// * nofollow links might be useful in some situations. See here:
+// * -> http://en.wikipedia.org/wiki/Nofollow#Control_internal_PageRank_flow)
+// *
+// * Why div:empty, span:empty, li:empty, p:empty, td:empty, th:empty?
+// * It'll just check if you have some redundancy (empty elements) in you code.
+// *
+// **/
+ 
+.seo-helper () {
+	img:not([alt]), img[alt=""], img[alt^=" "],
+	a[href=""], a[href^=" "], a[href="#"], a[rel*="nofollow"],
+	div:empty, span:empty, li:empty, p:empty, td:empty, th:empty,
+	*[title=""], *[class=""], *[id=""] {
+		outline: 2px solid red !important;
+		outline-offset: 3px !important;
+		}
+	head, title:empty, link, meta {display: block;}
+	title:empty:before {content: "You've left the <title> empty!"}
+	link:before {content: "You don't have a <title>!"}
+	title ~ link {display: none;}
+	meta[name="description"][content=""]:before, meta[name="description"][content=" "]:before {content: "You've left description empty!";}
+	}
+
+
+///**
+// * SEO & HTML Debugging
+// *
+// * A useful supporting class that will help you a bit with your SEO
+// * and usability of your website.
+// *
+// * @ABOUT
+// * Creating a website is a serious business, but sometimes you may
+// * forget about some important details. This class will help you.
+// * It will let you know if you haven't put an alt attribute on an image
+// * or kept that attribute empty, when you haven't typed an URL in an anchor or when
+// * an anchor link has rel=nofollow attribute. It will also show you an alert
+// * message if you don't have a <title> tag and description or left them empty(*).
+// *
+// * If any of those errors happens, an element will get a red outline
+// * border drawing your attention and asking for some love
+// * or you will get a message with the same purpose.
+// *
+// *    (*) The <title> reminder can alert you even if you have a <title> tag.
+// *        This happens if you have a <link> tag (usually used for style sheets)
+// *        before <title> in your HTML. Just change the order of <link> and
+// *        <title> and you're cool.
+// *
+// * @USAGE
+// * Just place .seo-helper() class in the stylesheet.
+// *
+// * @EXAMPLE
+// * .seo-helper()
+// *
+// * That way every element on your page will be affected
+// * by this rule. You can also place it in any other container
+// * class element in your code (body, div.wrapper, article and so on)
+// * if you don't want for some reasons to check for bugs on whole page
+// * but in a single area.
+// *
+// * Caution! It's only a developement support. Do not forget to delete
+// * this class before finishing yourproject and deploying to production,
+// * unless you want to keep it in continuous project (like blog)
+// * and debug every new content on your site. But then you might consider
+// * restyling this class to be a bit more eye-pleasing.
+// *
+// * This may not work in every browser, but since you are a web 
+// * developer/designer you're probably already using a bleeding
+// * edge nightly alpha back-door version of browser, so no problem!
+// * It's probably the only class you don't need to care about how
+// * your visitors will see it!
+// *
+// * @BROSERS SUPPORT
+// * (unknown / not important)
+// *
+// * @LINKS
+// * * http://radiatingstar.com/how-to-improve-seo-with-css
+// *
+// * @ASIDE
+// * Why img:not([alt]), img[alt=""] and img[alt^=" "]?
+// * First targets images that don't have an alt attribute, second targets
+// * ones that have this attribute but it's left empty (probably left by
+// * automatic completion of html editor), third is just in case - it
+// * might have been left by html editor or manually "to do it later" (clearly
+// * a space at the beginning of an alt can't be anything good).
+// *
+// * Why a[href=""]?
+// * If you write an anchor text and leave href to copyPaste URL later,
+// * it will reminding you about that.
+// *
+// * Why a[rel="nofollow"]?
+// * For some reasons links on your site may have this attribute and this
+// * may generate a huge SEO problem. Better fix it ASAP. (On the other hand
+// * nofollow links might be useful in some situations. See here:
+// * -> http://en.wikipedia.org/wiki/Nofollow#Control_internal_PageRank_flow)
+// *
+// * Why div:empty, span:empty, li:empty, p:empty, td:empty, th:empty?
+// * It'll just check if you have some redundancy (empty elements) in you code.
+// *
+// **/
+ 
+.seo-helper () {
+		/* ----------------------------------------------------------------------------
+		|	Loosely based on inuit.css by Harry Roberts http://csswizardry.com/		  |
+		|	Adapted and improved by Sean Steindl aka http://github.com/laughingwithu  |
+		|																			  |
+		|	Enable this stylesheet to visually detect any improperly nested or		  |
+		|	potentially invalid markup, or any potentially inaccessible code.		  |
+		|	Red          ==      definite error 									  |
+		|	Yellow       ==      double-check 										  |
+		|	None         ==      should be fine 									  |
+		|	Please note that this method of checking markup quality should not	be	  | 
+		|	relied upon entirely. Validate your markup!								  |
+		---------------------------------------------------------------------------- */
+
+		/* 	 Empty Elements
+		============================================================================ */
+		:empty{
+			outline:5px solid yellow;
+			content: "It appears that this element is  empty!";
+		}
+
+		/* 	Images
+		===============================================================================
+		|	imgs require `alt` attributes, empty `alt`s are fine but should be 		  |
+		|	double-checked, no `alt` is bad and is flagged red.						  |
+		---------------------------------------------------------------------------- */
+		img{
+			outline:5px solid red;
+			content: "We need an alt attribute!";
+		}
+		img[alt]{
+			outline:none;
+		}
+		img[alt=""], img[alt^=" "]{
+			outline:5px solid yellow;
+			content: "It appears that the alt attribute is  empty!";
+		}
+
+		/* 	Links
+		===============================================================================
+		|	Links sometimes, though not always, benefit from `title` attributes. 	  |
+		|	Links without are never invalid but it’s a good idea to check.			  |
+		---------------------------------------------------------------------------- */
+		a{
+			outline:5px solid yellow;
+			content: "Please give us a title attribute!";
+		}
+		a[title]{
+			outline:none;
+		}
+
+		/* ----------------------------------------------------------------------------
+		|	Double-check any links whose `href` is something questionable.		 	  |
+		---------------------------------------------------------------------------- */
+		a[href="#"],
+		a[href*="javascript"]{
+			outline:5px solid yellow;
+			content: "This link looks questionable!";
+		}
+
+		/* ----------------------------------------------------------------------------
+		|	The `target` attribute ain’t too nice...							 	  |
+		---------------------------------------------------------------------------- */
+		a[target]{
+			outline:5px solid yellow;
+			content: "Consider removing the target attribute!";
+		}
+
+		/* ----------------------------------------------------------------------------
+		|	Blanket usage of the rel="nofollow" is not good for SEO				 	  |
+		---------------------------------------------------------------------------- */
+		 a[rel*="nofollow"] {
+			outline:5px solid yellow;
+			content: "Are you sure the nofollow attribute is being used correctly!";
+		 }
+
+		/* 	Lists
+		===============================================================================
+		|	Ensure any lists only contain `li`s as children.					 	  |
+		---------------------------------------------------------------------------- */
+		ul, ol{
+			> *:not(li){
+				outline:5px solid red;
+				content: "It appears that there is no list!";
+			}
+		}
+
+		/* 	Tables
+		===============================================================================
+		|	It’s always nice to give `th`s `scope` attributes					 	  |
+		---------------------------------------------------------------------------- */
+		th{
+			outline:5px solid yellow;
+			content: "Please give us a scope attribute!";
+		}
+		th[scope]{
+			outline:none;
+		}
+
+		/* ----------------------------------------------------------------------------
+		|	`tr`s as children of tables ain’t great, did you need a `thead`/`tbody`?  |
+		---------------------------------------------------------------------------- */
+		table > tr{
+			outline:5px solid yellow;
+			content: "Maybe use a thead/tbody instead!";
+		}
+
+		/* ----------------------------------------------------------------------------
+		|	`tfoot` needs to come *before* `tbody`.									  |
+		---------------------------------------------------------------------------- */
+		tbody + tfoot{
+			outline:5px solid yellow;
+			content: "tbody needs to be before tfoot";
+		}
+
+		/* 	FORMS
+		===============================================================================
+		|	Forms require `action` attributes										  |
+		---------------------------------------------------------------------------- */
+		form{
+			outline:5px solid red;
+			content: "Please give me an action attribute!";
+		}
+		form[action]{
+			outline:none;
+		}
+
+		/* ----------------------------------------------------------------------------
+		|	Various form-field types have required attributes. `input`s need `type`	  |
+		|	 * attributes, `textarea`s need `rows` and `cols` attributes and submit	  | 
+		|	buttons	 * need a `value` attribute.									  |
+		---------------------------------------------------------------------------- */
+		textarea,
+		input{
+			outline:5px solid red;
+			content: "Please give me an input attribute!";
+		}
+		input[type]{
+			outline:none;
+		}
+		textarea[rows][cols]{
+			outline:none;
+		}
+		input[type=submit]{
+			outline:5px solid red;
+			content: "Please give me a value attribute!";
+		}
+		input[type=submit][value]{
+			outline:none;
+		}
+
+		/* 	 SEO Specific
+		===============================================================================
+		|	Checks that you generally have not left out the basics.					  |
+		---------------------------------------------------------------------------- */
+		head, title:empty, link, meta {
+			display: block;
+		}
+		title:empty:before {
+			content: "You've left the <title> empty!";
+		}
+		link:before {
+			content: "You don't have a <title>!";
+		}
+		title ~ link {
+			display: none;
+		}
+		meta[name="description"][content=""]:before, meta[name="description"][content=" "]:before {
+			content: "You've left description empty!";
+		}
+
+		/* 	 Miscelaneous
+		===============================================================================
+		|	Avoid inline styles where possible.										  |
+		---------------------------------------------------------------------------- */
+		[style]{
+			outline:5px solid yellow;
+			content: "Inline styles should generally be avoided!";
+		}
+
+		/* ----------------------------------------------------------------------------
+		|	You should avoid using IDs in your CSS, is this doing any styling?		  |
+		---------------------------------------------------------------------------- */
+		[id]{
+			outline:5px solid yellow;
+			content: "Is this ID strictly necessary!";
+		}
+	}

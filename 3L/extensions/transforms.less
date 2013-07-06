@@ -1,0 +1,174 @@
+///**
+// * Transforms
+// * 
+// * 2D and 3D transformation of an object.
+// *
+// * @ABOUT
+// * Transforms don't affect an object's place in a document and its environment
+// * so there's no risk of crashing a layout.
+// * 
+// * Transformations characteristics:
+// * -- Rotate takes one argument and rotate object clockwise by specified angle (in deg).
+// * -- Scale takes one or two arguments (x,y). If y is not specified it is assumed that x = y.
+// * 	Arguments in interval (0,1) shrink the object. Arguments >1 makes it bigger.
+// * -- Skew takes one or two arguments (x,y). If y is not specified it is assumed that y = 0 (no y-skew).
+// * 	Arguments must be in deg.
+// * -- Translate takes one or two arguments (w,y). If y is not specified it is assumed y = 0 (no y-translate).
+// * 	Arguments are in px or em. Translate moves the object by specified value.
+// * 
+// * Sometimes you might want to control the point that is the relative base of transformations.
+// * For that reason use .transform-origin class. That class takes one or two values.
+// * First value defines horizontal position of that point, second refers to vertical position.
+// * In case you provide only the first value, the second is set to 50%. Default value is (50% 50%).
+// * You can use three types of values:
+// * -- pixels that place origin point in position according to the top-left corner of an element
+// * 	to its bottom-right corner. Negative values allowed - in that case position goes to the left
+// *    and top from the top-left corner,
+// * -- percentages that are relative to object's width and height. As in px, the original position
+// *    is top-left corner (0% 0%), and goes to bottom-right (100% 100%). Negative values does the
+// *    same as in px.
+// * -- keywords: left / center / right for x-axis and top / center / bottom for y-axis.
+// *
+// * For 3D transformations you can set a perspective using .perspective() class and putting
+// * value in brackets .
+// * 
+// * @USAGE
+// * You can use classes dedicated to specifics transformation, but if you plan
+// * to use multiple transformation on an object, use general classes .transform
+// * or .transform3d instead. Otherwise the latter transform will override the former.
+// * If you want to use some of the 3D transformations, use .transform3d class. It
+// * has a 3D specific property transform-style included. You can put both 3D and 2D
+// * transformations in .transform3D.
+// * 
+// * @EXAMPLES
+// * 1. .scale(2,.5) // Stretch an object two times and shrink in height by half.
+// * 2. .rotate(180deg) // Rotate an object by 180deg.
+// * 3. .transform(.scale(2,.5),rotate(180deg)) // Does the combined transformation from examples above.
+// * 4. .transform-origin(20% top) // Place the transformation origin at the top, 20% of the object's
+// * 							   // width to the right from the top-left corner. 
+// * 	
+// * @BROWSERS SUPPORT
+// * IE9 (2D), IE10+ (3D), Fx3.5 (2D) and every other (except for Opera Mini)
+// * 
+// * @LINKS
+// * * https://developer.mozilla.org/en-US/docs/CSS/transform
+// * * http://caniuse.com/#feat=transforms2d
+// * * http://caniuse.com/#feat=transforms3d
+// **/
+
+.transform-origin (...) {
+	-webkit-transform-origin: @arguments;
+	-moz-transform-origin: @arguments;
+	-ms-transform-origin: @arguments;
+	transform-origin: @arguments;
+}
+.transform-style(@style) {
+	-webkit-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.perspective (@perspective) {
+	-webkit-perspective: @perspective;
+	perspective: @perspective;
+}
+.perspective-origin (...) {
+	-webkit-perspective-origin: @arguments;
+	perspective-origin: @arguments;
+}
+.backface-visibility(@visibility){
+    -webkit-backface-visibility: @visibility;
+    backface-visibility: @visibility;
+}
+.transform (...) {
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-ms-transform: @arguments;
+	transform: @arguments;
+	}
+.transform3d (...) {
+	-webkit-transform: @arguments;
+	transform: @arguments;
+}
+.transform-perspective (@perspective) {
+	-webkit-transform: perspective(@perspective);
+	transform: perspective(@perspective);
+}
+.rotate (@rotate) {
+	-webkit-transform: rotate(@rotate);
+	-moz-transform: rotate(@rotate);
+	-ms-transform: rotate(@rotate);
+	transform: rotate(@rotate);
+	}
+.rotate3d (@deg1, @deg2:0, @deg3:0){
+	-webkit-transform: rotateX(@deg1) rotateY(@deg2) rotateZ(@deg3);
+	transform: rotateX(@deg1) rotateY(@deg2) rotateZ(@deg3);
+	}
+.scale (@scale) {
+	-webkit-transform: scale(@scale);
+	-moz-transform: scale(@scale);
+	-ms-transform: scale(@scale);
+	transform: scale(@scale);
+	}
+.scale (@scale1,@scale2) {
+	-webkit-transform: scale(@scale1,@scale2);
+	-moz-transform: scale(@scale1,@scale2);
+	-ms-transform: scale(@scale1,@scale2);
+	transform: scale(@scale1,@scale2);
+	}
+.scaleX (@scale) {
+	-webkit-transform: scaleX(@scale);
+	-moz-transform: scaleX(@scale);
+	-ms-transform: scaleX(@scale);
+	transform: scaleX(@scale);
+	}
+.scaleY (@scale) {
+	-webkit-transform: scaleY(@scale);
+	-moz-transform: scaleY(@scale);
+	-ms-transform: scaleY(@scale);
+	transform: scaleY(@scale);
+	}
+.skew (@skew) {
+	.skewX(@skew);
+	}
+.skew (@skew1, @skew2) {
+	-webkit-transform: skewX(@skew1) skewY(@skew2);
+	-moz-transform: skewX(@skew1) skewY(@skew2);
+	-ms-transform: skewX(@skew1) skewY(@skew2);
+	transform: skewX(@skew1) skewY(@skew2);
+	}
+.skewX (@skew) {
+	-webkit-transform: skewX(@skew);
+	-moz-transform: skewX(@skew);
+	-ms-transform: skewX(@skew);
+	transform: skewX(@skew);
+	}
+.skewY (@skew) {
+	-webkit-transform: skewY(@skew);
+	-moz-transform: skewY(@skew);
+	-ms-transform: skewY(@skew);
+	transform: skewY(@skew);
+	}
+.translate (@translate) {
+	-webkit-transform: translate(@translate);
+	-moz-transform: translate(@translate);
+	-ms-transform: translate(@translate);
+	transform: translate(@translate);
+	}
+.translate (@translate1, @translate2) {
+	-webkit-transform: translate(@translate1, @translate2);
+	-moz-transform: translate(@translate1, @translate2);
+	-ms-transform: translate(@translate1, @translate2);
+	transform: translate(@translate1, @translate2);
+	}
+.translateX (@translate) {
+	-webkit-transform: translateX(@translate);
+	-moz-transform: translateX(@translate);
+	-ms-transform: translateX(@translate);
+	transform: translateX(@translate);
+	}
+.translateY (@translate) {
+	-webkit-transform: translateY(@translate);
+	-moz-transform: translateY(@translate);
+	-ms-transform: translateY(@translate);
+	transform: translateY(@translate);
+	}

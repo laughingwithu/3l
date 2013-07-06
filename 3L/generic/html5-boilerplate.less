@@ -1,0 +1,56 @@
+///**
+// * HTML5 Boiler Plate's default stylesheets.
+// * 
+// * @USAGE
+// * Just write chosen method in your CSS.
+// *
+// * @EXAMLPES
+// * /* In CSS */
+// * .h5bp()
+// **/
+
+.h5bp() {html,button,input,select,textarea{color:#222}body{font-size:1em;line-height:1.4}::-moz-selection{background:#b3d4fc;text-shadow:none}::selection{background:#b3d4fc;text-shadow:none}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}img{vertical-align:middle}fieldset{border:0;margin:0;padding:0}textarea{resize:vertical}.chromeframe{margin:.2em 0;background:#ccc;color:#000;padding:.2em 0}}
+.h5bp-print() {@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important;} a,a:visited{text-decoration:underline;} a[href]:after{content:" (" attr(href) ")";} abbr[title]:after{content:" (" attr(title) ")";} .ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:"";} pre,blockquote{border:1px solid #999;page-break-inside:avoid;} thead{display:table-header-group;} tr,img{page-break-inside:avoid;} img{max-width:100% !important;} @page {margin:0.5cm;}p,h2,h3{orphans:3;widows:3;} h2,h3{page-break-after:avoid;}}.przerwa{color:#ff0000;}}
+
+///**
+// * Helper classes from HTML5 Boilerplate
+// * 
+// * Classes below help you create a better user experience for both users
+// * of browsers and screen readers. Oh, and there's also a clearfix! 
+// * 
+// * @ABOUT
+// * All the classes comes from HTML5 Boilerplate (-> html5boilerplate.com). Here though,
+// * they're changed so that they can be easily used in The LESS Way.
+// * They're called "non-semantic" in H5B, but here they become semantic if used well.
+// * (Actually they can't be used in any way than good in 3L.)
+// * (Actually II they can be semantic in H5B as well, but it's a bit pain to do that.)
+// * 
+// * @USAGE
+// * Just put them in your classes, id's or elements.
+// * 
+// * @EXAMPLE
+// * .class-selector {
+// *     .ir();
+// *     .clearfix();
+// * }
+// **/
+
+// Image replacement.
+.ir () {border: 0; overflow: hidden; background-color: transparent; *text-indent: -9999px; &:before {content: ""; display: block; width: 0; height: 100%;}}
+
+// Hide from both screenreaders and browsers: h5bp.com/u
+.hidden () {display: none !important; visibility: hidden;}
+
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+.visuallyhidden () {border: 0;clip: rect(0 0 0 0);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}
+	
+// Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p
+// CAUTION! The .visuallyhidden class is included! If you want your object to be both
+// .visuallyhidden and .focusabe use only .focusable class.
+.focusable () {.visuallyhidden;&:active,&:focus{clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto;}}
+
+// Hide visually and from screenreaders, but maintain layout.
+.invisible () {visibility: hidden;}
+
+// Contain floats: h5bp.com/q
+.clearfix () {*zoom:1;&:before,&:after{content:" ";display:table;}&:after{clear:both;}}

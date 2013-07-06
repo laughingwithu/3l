@@ -1,0 +1,46 @@
+///**
+// * Background-size
+// * 
+// * Scale (or not) your background image.
+// * 
+// * @ABOUT
+// * This property takes following values:
+// * -- auto [default] - it does nothing when used alone; when used with a value
+// *    it makes sure that image will keep its aspect ratio while being stretched
+// *    to the required size. (See: examples 3. and 4.)
+// * -- contain - scale image to the first border it meets;
+// *    it may leave some area uncovered but keeps image's aspect ratio,
+// * -- cover - scale image to the second border it meets;
+// *    cover all area but part of an image may not be shown. The image keeps its aspect ratio.
+// * -- px, em, % - scale image according to declared value;
+// *    you can declare one value (x-size) or two values for each size.
+// *    Using (100%, 100%) stretch the image to cover full area but may not
+// *    keep its aspect ratio. When you use percentages keep in mind that XX%
+// *    means XX% of the element size, not XX% of the background image. 
+// * 
+// * Consider adding background-repeat property to avoid unwanted repetition of background.
+// *
+// * @EXAMPLES
+// * 1. .background-size(contain);
+// * 2. .background-size(cover); 
+// * 3. .background-size(70%); 		 // = (70% auto). Image is scaled to take 70% of width
+// *									 		 // of the element and it keeps its own aspect ratio.
+// * 4. .background-size(auto, 70%) // Image is scaled to take 70% of element's
+// * 										 // height and keeps aspect ratio.
+// * 5. background-size(70px 7em);  // Size of the background image is now 70px (width) x 7em (height).
+// * 6. background-size(70px,7em);  // Same as above. Comma is fine too.
+// *
+// * @BROWSERS SUPPORT
+// * IE9+, Fx3.6+ and every other.
+// *
+// * @LINKS
+// * * https://developer.mozilla.org/en-US/docs/CSS/background-size
+// * * http://caniuse.com/#search=background-size
+// **/
+ 
+.background-size (...) {
+	-moz-background-size: @arguments;
+	background-size: @arguments;
+	}
+// A shorthand class.
+.bg-size (...) {.background-size(@arguments)}

@@ -1,0 +1,64 @@
+///**
+// * Opacity
+// *
+// * Make an object transparent.
+// *
+// * @ABOUT
+// * Opacity takes values between 0.0 (invisible) to 1.0 (default - full
+// * visibility) but 3L lets you also use percentages and values from >1 to 100.
+// *
+// * @USAGE
+// * If you want an element with transparency 1, .5 or 0, use these classes:
+// * .not-transparent., .half-transparent, .transparent.
+// *
+// * @BROWSERS SUPPORT
+// * full (IE6+)
+// *
+// * @LINKS
+// * * https://developer.mozilla.org/en-US/docs/CSS/opacity
+// * * http://caniuse.com/#feat=css-opacity
+// * 
+// * @ASIDE
+// * Do we need the ability to set opacity in numbers from 1 to 100
+// * and in percentages? I think we do, because:
+// * 1. You need to use integer numbers in filter property for IE,
+// *    so there is a possibility that someone will type this kind
+// *    of value, instead of [0,1].
+// * 2. LESS has a fade() function that uses percentages to makes
+// *    colours (semi)transparent, so using percentages here will
+// *    result in more consistent code (same unit in similar situation).
+// * 3. Percentages are more intuitive when it comes to transparency and
+// *    opacity since graphic editors like Photoshop and GIMP use them.
+// *
+// **/
+
+.transparent() {.opacity(0);}
+.non-transparent() {.opacity(1);}
+.half-transparent () {.opacity(.5);}
+.opacity () {.non-transparent();}
+.opacity (@value) when (isnumber(@value)) and (@value =< 1){
+	opacity: @value;
+	filter: ~"alpha(opacity="@value*100~")";
+	}
+.opacity (@value) when (isnumber(@value)) and (@value > 1) and not (ispercentage(@value)){
+	// INFO: for the explanation of rule "and not (ispercentage(@value))" refer to the class below.
+	opacity: @value/100;
+	filter: ~"alpha(opacity="@value~")";
+	}
+.opacity (@value) when (ispercentage(@value)) {
+	// Change the @value from percentage to integer (XX% => XX)
+	@integerValue: `parseInt('@{value}')`;
+	// Actually the @value should be a number now... but it isn't.
+	// LESS think of it as a string so we can't do math here.
+	// We'll use a feature of LESS that automatically makes
+	// a second value's unit in a sum to be the same as the first one.
+	// In our case we need a number so we can divide it by 100.
+	opacity: (0 + @integerValue) /100;
+	// We don't need a math in filter so no trick.
+	filter: ~"alpha(opacity="@integerValue~")";
+	
+	// BUG: WinLESS compile this with doubled properties unless the rule
+	// "and not (ispercentage(@value))" is added in the class above.
+	// In Firebug (through the LESS native compiler) those properties
+	// aren't doubled, though.
+	}
