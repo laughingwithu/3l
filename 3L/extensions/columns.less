@@ -1,0 +1,65 @@
+///**
+// * Columns layout
+// * 
+// * Divide a block of text into columns as seen in newspapers.
+// * 
+// * @USAGE
+// * Use .columns() class providing arguments in the brackets.
+// * None of those arguments are required, but unless you provide one, columns
+// * layout won't work. Available arguments:
+// * -- [integer] - declare a column-count. Unless declared, their width will 
+// *    equal to division of the block's width minus column-gaps and declared integer.
+// *    Default value is "auto" which means that width of columns will be determined
+// *    by column-width value.
+// * -- [width] - declare every column width in px, em and % (of containing block).
+// *    Default value is "auto" - column width will be equal to division of the 
+// *    block's width and declared column-count
+// * 
+// * Usage of supporting classes:
+// * You can declare the gaps between columns by .column-gap() class that takes
+// * width type argument. Default value is "normal" and equals to 1em.
+// * 
+// * Declare a vertical rule between columns using .column-rule(). It's the same
+// * type of declaration as in borders, that is width, style and colour. By default
+// * there is no rule.
+// * 
+// * @EXAMPLES
+// * 1. .column(2, 20px) // Two columns with 20px width.
+// * 2. .column(5) // Five columns layout.
+// * 3. element {
+// *        .column(100px);					// A 100px width columns
+// * 		.column-gap(10px);				// with 10px gap between
+// * 		.column-rule(1px solid black);	// and 1px thick, solid, black vertical rule.
+// *	}
+// *
+// * @BROWSERS SUPPORT
+// * IE10+ and every other (except for Opera Mini)
+// * 
+// * @LINKS
+// * * https://developer.mozilla.org/en-US/docs/CSS/columns
+// * * http://caniuse.com/#feat=multicolumn
+// **/
+
+.columns (...) {
+	-webkit-columns: @arguments;
+	-moz-columns: @arguments;
+	columns: @arguments;
+	}
+.column-gap (@gap) {
+	-webkit-column-gap: @gap;
+	-moz-column-gap: @gap;
+	column-gap: @gap;
+	}
+.columns-gap (@gap) {.column-gap(@gap);}
+.column-rule (...) {
+	-webkit-column-rule: @arguments;
+	-moz-column-rule: @arguments;
+	column-rule: @arguments;
+	}
+.columns-rule (...) {.column-rule(@arguments);}
+.column-fill (@fill) {
+	-webkit-column-fill: @fill;
+	-moz-column-fill: @fill;
+	column-fill: @fill;
+}
+.columns-fill (@fill) {.column-fill(@fill);}

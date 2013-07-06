@@ -1,0 +1,49 @@
+///**
+// * User-select
+// *
+// * Controls the selection model of an element.
+// *
+// * @ABOUT
+// * This property takes following values:
+// * -- none - none of the element's content can be selected.
+// * -- text [default] - the element's contents follow a standard text content selection model.
+// * -- toggle - the element's contents follow a standard toggling content model.
+// * -- element - one element at a time may be selected.
+// * -- elements - one or more elements at a time may be selected.
+// * -- all - Only the entire contents as a whole can be selected.
+// *
+// * @BROWSERS SUPPORT
+// * IE10+, Firefox, Chrome, Safari (not Opera)
+// *
+// * @LINKS
+// * * https://developer.mozilla.org/en-US/docs/CSS/user-select
+// * * http://caniuse.com/#search=user-select
+// **/
+
+.user-select (...) {
+	-webkit-user-select: @arguments;
+	-moz-user-select: @arguments;
+	-ms-user-select: @arguments;
+	user-select: @arguments;
+}
+
+///**
+// * Selection
+// *
+// * Style a visual representtion of selecting elements and objects.
+// * 
+// * @USAGE
+// * You can use it on the root of your CSS to make the selection style global
+// * or inside a specyfic element. Provide two arguments: font color and background-color.
+// * 
+// * @EXAMPLES
+// * 1. .selection(red, blue);
+// * 2. p {
+// *        .selection(red, blue)
+// *    }
+// **/
+
+.selection(@text-color, @background-color) {
+	&::-moz-selection {color: @text-color; background-color: @background-color;}
+	&::selection {color: @text-color; background-color: @background-color;}
+}

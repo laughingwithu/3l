@@ -1,0 +1,26 @@
+///**
+// * hasLayout
+// * 
+// * A hack for IE.
+// *
+// * @LINKS
+// * * http://reference.sitepoint.com/css/haslayout
+// **/
+
+.hasLayout() {*zoom: 1;}
+
+///**
+// * Appearance
+// *
+// * @LINKS
+// * * https://developer.mozilla.org/en-US/docs/CSS/-moz-appearance
+// * 
+// * @USAGE
+// * This property should be used with care as support is patchy at best.
+// * 
+// **/
+
+.appearance (@appearance) {
+    -webkit-appearance: @appearance;
+    -moz-appearance: @appearance;
+}
